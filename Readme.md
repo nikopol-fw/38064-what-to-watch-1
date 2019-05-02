@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Николай Думчев](https://up.htmlacademy.ru/react/1/user/38064).
-* Наставник: `Неизвестно`.
+* Наставник: [Арсений Ильяшов](https://htmlacademy.ru/profile/id40943).
 
 ---
 
