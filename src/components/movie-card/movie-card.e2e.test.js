@@ -18,8 +18,8 @@ it(`Click on the card title is correct`, () => {
     onClick={clickHandler}
   />);
 
-  expect(movieCard.find(`.small-movie-card__link`))
-    .toEqual({});
+  expect(movieCard.find(`.small-movie-card__link`).length)
+    .toEqual(1);
 
   movieCard
     .find(`.small-movie-card__link`)
