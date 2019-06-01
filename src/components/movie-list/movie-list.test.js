@@ -1,9 +1,9 @@
-// app.test.jsx
+// movie-list.test.jsx
 
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {App} from './app.jsx';
+import {MovieList} from './movie-list';
 
 
 const mock = [{
@@ -24,9 +24,9 @@ const mock = [{
 }];
 
 
-it(`App correctly renders`, () => {
+it(`MovieCard correctly renders`, () => {
   const tree = renderer
-    .create(<App
+    .create(<MovieList
       movies={mock}
     />)
     .toJSON();

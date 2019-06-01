@@ -3,9 +3,11 @@
 exports[`MovieCard correctly renders 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
 >
   <button
     className="small-movie-card__play-btn"
+    onClick={[Function]}
     type="button"
   >
     Play
@@ -14,7 +16,7 @@ exports[`MovieCard correctly renders 1`] = `
     className="small-movie-card__image"
   >
     <img
-      alt="{title}"
+      alt="Fantastic Beasts: The Crimes of Grindelwald"
       height="175"
       src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       width="280"
@@ -27,7 +29,7 @@ exports[`MovieCard correctly renders 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Test title
+      Fantastic Beasts: The Crimes of Grindelwald
     </a>
   </h3>
 </article>
