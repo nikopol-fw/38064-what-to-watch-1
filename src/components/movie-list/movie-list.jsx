@@ -22,21 +22,25 @@ export class MovieList extends React.PureComponent {
       {movies.map((item, i) => <MovieCard key={i}
         title={item.title}
         src={item.src}
-        onClick={this._getActiveCard(item)}
+        onClick={() => {
+          this._getActiveCard(item);
+        }}
         onMouseEnter={() => {
-          this.setState({
-            activeCard: item
-          });
+          this._setActiveCard(item);
         }}
       />)}
     </div>;
   }
 
   _getActiveCard(card) {
-    return () => {
-      // eslint-disable-next-line no-console
-      console.log(card);
-    };
+    // eslint-disable-next-line no-console
+    console.log(card);
+  }
+
+  _setActiveCard(card) {
+    this.setState({
+      activeCard: card
+    });
   }
 }
 

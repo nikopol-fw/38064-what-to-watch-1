@@ -21,10 +21,13 @@ const mock = {
 it(`Active card information is correct`, () => {
   const clickHandler = jest.fn();
   const mouseEnterHandler = jest.fn();
+
   const movieCard = shallow(<MovieCard
     title={mock.title}
     src={mock.src}
-    onClick={clickHandler}
+    onClick={() => {
+      clickHandler(mock);
+    }}
     onMouseEnter={mouseEnterHandler}
   />);
 
@@ -32,8 +35,10 @@ it(`Active card information is correct`, () => {
     .toEqual(1);
 
   movieCard
+    .simulate(`mouseenter`)
     .find(`.small-movie-card__play-btn`)
     .simulate(`click`);
 
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+
+  expect(clickHandler).toHaveBeenCalledWith(mock);
 });
