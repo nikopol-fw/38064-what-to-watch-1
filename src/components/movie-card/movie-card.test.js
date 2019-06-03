@@ -6,10 +6,19 @@ import renderer from 'react-test-renderer';
 import {MovieCard} from './movie-card';
 
 
+const mock = {
+  title: `Fantastic Beasts: The Crimes of Grindelwald`,
+  src: `fantastic-beasts-the-crimes-of-grindelwald.jpg`
+};
+
+
 it(`MovieCard correctly renders`, () => {
   const tree = renderer
     .create(<MovieCard
-      title={`Test title`}
+      title={mock.title}
+      src={mock.src}
+      onClick={() => {}}
+      onMouseEnter={() => {}}
     />)
     .toJSON();
 

@@ -11,19 +11,34 @@ configure({
   adapter: new Adapter()
 });
 
-it(`Click on the card title is correct`, () => {
+
+const mock = {
+  title: `Fantastic Beasts: The Crimes of Grindelwald`,
+  src: `fantastic-beasts-the-crimes-of-grindelwald.jpg`
+};
+
+
+it(`Active card information is correct`, () => {
   const clickHandler = jest.fn();
+  const mouseEnterHandler = jest.fn();
+
   const movieCard = shallow(<MovieCard
-    title={`Test title`}
-    onClick={clickHandler}
+    title={mock.title}
+    src={mock.src}
+    onClick={() => {
+      clickHandler(mock);
+    }}
+    onMouseEnter={mouseEnterHandler}
   />);
 
-  expect(movieCard.find(`.small-movie-card__link`).length)
+  expect(movieCard.find(`.small-movie-card__play-btn`).length)
     .toEqual(1);
 
   movieCard
-    .find(`.small-movie-card__link`)
+    .simulate(`mouseenter`)
+    .find(`.small-movie-card__play-btn`)
     .simulate(`click`);
 
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+
+  expect(clickHandler).toHaveBeenCalledWith(mock);
 });

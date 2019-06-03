@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {MovieCard} from './../movie-card/movie-card';
+import {MovieList} from '../movie-list/movie-list';
 
 
 export const App = (props) => {
@@ -134,9 +134,7 @@ export const App = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {movies.map((item, i) => <MovieCard key={i} title={item} />)}
-        </div>
+        <MovieList movies={movies}/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -162,5 +160,8 @@ export const App = (props) => {
 
 
 App.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string)
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    src: PropTypes.string
+  }))
 };

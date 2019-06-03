@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // movie-card.jsx
 
 import React from 'react';
@@ -5,17 +6,15 @@ import PropTypes from 'prop-types';
 
 
 export const MovieCard = (props) => {
-  const {title, onClick} = props;
+  const {title, src, onClick, onMouseEnter} = props;
 
-  return <article className="small-movie-card catalog__movies-card">
-    <button className="small-movie-card__play-btn" type="button">Play</button>
+  return <article className="small-movie-card catalog__movies-card" onMouseEnter={onMouseEnter}>
+    <button className="small-movie-card__play-btn" type="button" onClick={onClick}>Play</button>
     <div className="small-movie-card__image">
-      <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="{title}" width="280" height="175" />
+      <img src={`img/${src}`} alt={title} width="280" height="175" />
     </div>
     <h3 className="small-movie-card__title">
-      <a className="small-movie-card__link"
-        href="movie-page.html"
-        onClick={onClick}>{title}</a>
+      <a className="small-movie-card__link" href="movie-page.html">{title}</a>
     </h3>
   </article>;
 };
@@ -23,5 +22,7 @@ export const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   title: PropTypes.string,
-  onClick: PropTypes.func
+  src: PropTypes.string,
+  onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func
 };
