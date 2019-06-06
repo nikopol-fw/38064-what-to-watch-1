@@ -14,31 +14,27 @@ configure({
 
 const mock = {
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
-  src: `fantastic-beasts-the-crimes-of-grindelwald.jpg`
+  src: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 
 it(`Active card information is correct`, () => {
-  const clickHandler = jest.fn();
   const mouseEnterHandler = jest.fn();
+  const mouseLeaveHandler = jest.fn();
 
   const movieCard = shallow(<MovieCard
     title={mock.title}
     src={mock.src}
-    onClick={() => {
-      clickHandler(mock);
-    }}
+    preview={mock.preview}
+
     onMouseEnter={mouseEnterHandler}
+    onMouseLeave={mouseLeaveHandler}
   />);
 
-  expect(movieCard.find(`.small-movie-card__play-btn`).length)
-    .toEqual(1);
-
   movieCard
-    .simulate(`mouseenter`)
-    .find(`.small-movie-card__play-btn`)
-    .simulate(`click`);
+    .simulate(`mouseenter`);
 
 
-  expect(clickHandler).toHaveBeenCalledWith(mock);
+  expect(mouseEnterHandler).toHaveBeenCalled();
 });
