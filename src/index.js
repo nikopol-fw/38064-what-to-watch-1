@@ -2,16 +2,23 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
 import films from './mocks/films';
-import {App} from './components/app/app';
+import {reducer} from './reducer';
+import App from './components/app/app';
 
+
+const store = createStore(reducer);
 
 const init = (filmList) => {
-  ReactDOM.render(
-      <App movies={filmList} />,
-      document.querySelector(`#root`)
-  );
+  ReactDOM.render(<Provider store={store}>
+    <App
+      films={filmList}
+    />
+  </Provider>,
+  document.querySelector(`#root`));
 };
 
 init(films);
