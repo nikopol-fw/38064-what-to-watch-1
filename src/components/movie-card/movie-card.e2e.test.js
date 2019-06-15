@@ -5,6 +5,7 @@ import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import {MovieCard} from './movie-card';
+import Mock from './../../mocks/films';
 
 
 configure({
@@ -12,11 +13,7 @@ configure({
 });
 
 
-const mock = {
-  title: `Fantastic Beasts: The Crimes of Grindelwald`,
-  src: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
-};
+const mock = Mock[0];
 
 
 it(`Active card information is correct`, () => {
@@ -27,7 +24,7 @@ it(`Active card information is correct`, () => {
     title={mock.title}
     src={mock.src}
     preview={mock.preview}
-
+    isActive={false}
     onMouseEnter={mouseEnterHandler}
     onMouseLeave={mouseLeaveHandler}
   />);

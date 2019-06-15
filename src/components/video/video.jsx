@@ -40,7 +40,7 @@ export class Video extends React.PureComponent {
 
 
 Video.propTypes = {
-  src: PropTypes.string,
-  preview: PropTypes.string,
-  isPlaying: PropTypes.bool
+  src: PropTypes.string.isRequired,
+  preview: PropTypes.string.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
 };

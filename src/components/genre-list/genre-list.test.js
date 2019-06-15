@@ -1,19 +1,17 @@
-// movie-list.test.jsx
+// genre-list.test.js
 
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {MovieList} from './movie-list';
+import {GenreList} from './genre-list';
 import Mock from './../../mocks/films';
 
 
-const mockGenre = `All genres`;
-
-it(`MovieList correctly renders`, () => {
+it(`GenreList correctly renders`, () => {
   const tree = renderer
-    .create(<MovieList
+    .create(<GenreList
       films={Mock}
-      genre={mockGenre}
+      onChangeGenre={() => {}}
     />)
     .toJSON();
 

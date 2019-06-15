@@ -27,10 +27,10 @@ export const MovieCard = (props) => {
 
 
 MovieCard.propTypes = {
-  title: PropTypes.string,
-  src: PropTypes.string,
-  preview: PropTypes.string,
-  isActive: PropTypes.bool,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  preview: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
 };
