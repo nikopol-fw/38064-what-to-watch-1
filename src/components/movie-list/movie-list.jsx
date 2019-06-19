@@ -1,24 +1,24 @@
 // movie-list.jsx
 
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import {MovieCard} from '../movie-card/movie-card';
 
 
-export class MovieList extends React.PureComponent {
+export class MovieList extends PureComponent {
   constructor(props) {
     super(props);
-    this.activationDuration = 1000;
-
-    this.state = {
-      activeCard: null,
-      timer: null,
-    };
   }
 
   render() {
-    const {films, genre} = this.props;
+    const {
+      films,
+      genre,
+      activeCard,
+      setActiveCard,
+      unsetActiveCard,
+    } = this.props;
 
     return <div className="catalog__movies-list">
       {genre === `All genres`
@@ -27,43 +27,26 @@ export class MovieList extends React.PureComponent {
             title={item.title}
             src={item.src}
             preview={item.preview}
-            isActive={i === this.state.activeCard ? true : false}
-            onMouseEnter={this._setActiveCard.bind(this, i)}
-            onMouseLeave={this._unsetActiveCard.bind(this)}
+            isActive={i === activeCard ? true : false}
+            onMouseEnter={() => {
+              setActiveCard(i);
+            }}
+            onMouseLeave={unsetActiveCard}
           />)
         : films
-            .filter((film) => film.genre === genre)
-            .map((item, i) => <MovieCard key={`movie-card-${i}`}
-              title={item.title}
-              src={item.src}
-              preview={item.preview}
-              isActive={i === this.state.activeCard ? true : false}
-              onMouseEnter={this._setActiveCard.bind(this, i)}
-              onMouseLeave={this._unsetActiveCard.bind(this)}
-            />)
+          .filter((film) => film.genre === genre)
+          .map((item, i) => <MovieCard key={`movie-card-${i}`}
+            title={item.title}
+            src={item.src}
+            preview={item.preview}
+            isActive={i === activeCard ? true : false}
+            onMouseEnter={() => {
+              setActiveCard(i);
+            }}
+            onMouseLeave={unsetActiveCard}
+          />)
       }
     </div>;
-  }
-
-  _setActiveCard(card) {
-    const timer = setTimeout(() => {
-      this.setState({
-        activeCard: card,
-      });
-    }, this.activationDuration);
-
-    this.setState({timer});
-  }
-
-  _unsetActiveCard() {
-    if (this.state.timer) {
-      clearTimeout(this.state.timer);
-    }
-
-    this.setState({
-      activeCard: null,
-      timer: null,
-    });
   }
 }
 
@@ -76,4 +59,7 @@ MovieList.propTypes = {
     genre: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
   })),
+  activeCard: PropTypes.number,
+  setActiveCard: PropTypes.func.isRequired,
+  unsetActiveCard: PropTypes.func.isRequired,
 };

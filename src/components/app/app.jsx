@@ -8,6 +8,10 @@ import {MovieList} from '../movie-list/movie-list';
 import {GenreList} from '../genre-list/genre-list';
 import {ActionCreators} from '../../reducer';
 
+import {withActiveItem} from '../../hocs/with-active-item/with-active-item';
+
+
+const MovieListWithActiveItem = withActiveItem(MovieList);
 
 const App = (props) => {
   const {films, genre, onChangeGenre} = props;
@@ -109,7 +113,7 @@ const App = (props) => {
           onChangeGenre={onChangeGenre}
         />
 
-        <MovieList
+        <MovieListWithActiveItem
           films={films}
           genre={genre}
         />
